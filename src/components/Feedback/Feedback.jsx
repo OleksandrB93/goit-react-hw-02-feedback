@@ -13,23 +13,12 @@ export default class Feedback extends Component {
     bad: 0,
   };
 
-  clickOnGood = () => {
-    this.setState({
-      good: this.state.good + 1,
-    });
-  };
+onClickBtn = event => 
+this.setState(prevState=>({
+  [event.target.name]: prevState[event.target.name] +1,
+}))
 
-  clickOnNeutral = () => {
-    this.setState({
-      neutral: this.state.neutral + 1,
-    });
-  };
 
-  clickOnBad = () => {
-    this.setState({
-      bad: this.state.bad + 1,
-    });
-  };
 
   totalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -45,9 +34,9 @@ export default class Feedback extends Component {
       <FeedbackContainer>
         <Section title="Please leave feedback 🥺">
           <FeedbackOption
-            handleGood={this.clickOnGood}
-            handleNeutral={this.clickOnNeutral}
-            handleBad={this.clickOnBad}
+            options={this.state}
+            onLeaveFeedback={this.onClickBtn}
+      
           />
         </Section>
 

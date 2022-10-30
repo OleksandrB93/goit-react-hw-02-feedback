@@ -1,15 +1,16 @@
-import { ButtonContainer,ButtonGood,ButtonNeutral,ButtonBad } from "./FeedbackOption.styled";
+import {
+  ButtonContainer,
+  ButtonStyled,
+} from "./FeedbackOption.styled";
 
-export default function FeedbackOption({
-  handleGood,
-  handleNeutral,
-  handleBad,
-}) {
+export default function FeedbackOption({ options, onLeaveFeedback }) {
   return (
     <ButtonContainer>
-      <ButtonGood onClick={handleGood}>Good</ButtonGood>
-      <ButtonNeutral onClick={handleNeutral}>Neutral</ButtonNeutral>
-      <ButtonBad onClick={handleBad}>Bad</ButtonBad>
+    {Object.keys(options).map(key => (
+      <ButtonStyled key={key} onClick={onLeaveFeedback} name={key}>
+        {key}
+      </ButtonStyled>
+    ))}
     </ButtonContainer>
   );
 }
